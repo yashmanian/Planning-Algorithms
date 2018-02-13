@@ -1,0 +1,9 @@
+This project entails determining the trajectory between two local nodes determined through the RRT. This was achieved through determining the value of angular and linear acceleration to be used to control the 1/2 car model. This was done using the following pipeline:
+1.
+The 1/2 car model was simulated through a set of dynamic equations. These took in the acceleration values and gave out the current postions of the model.
+2.
+The value of constant acceleration between nodes was determined through randomizing the angular and linear acceleration values. This allowed me to sample a large range of combinations of linear and angular accelerations, and calculate their paths ahead of time to determine which combination of values was the most optimized for the pair of nodes.
+3.
+This optimized value of accelerations is then used to determine the time taken to complete the curve. The states of the 1/2 car model are then passed on the next node as a starting point for the calculation of trajectory in the next local instance.
+4.
+The parent directory of each node is maintained and once the algorithm has reached the goal region, is used to trace back the path to the start position, and a CSV file is written for the final feasible path of the 1/2 car model. 
